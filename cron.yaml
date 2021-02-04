@@ -1,0 +1,5 @@
+cron:
+- description: "test stock update"
+  url: /update
+  schedule: every day 17:15
+  
