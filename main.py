@@ -1,6 +1,9 @@
 import datetime
-
 from flask import Flask, render_template, jsonify
+import gcloud
+from gcloud import storage
+import pandas as pd
+
 
 app = Flask(__name__)
 
@@ -130,7 +133,13 @@ def update():
         "to": "Goog",
         "note": "updated goog stock data",
     }]
-    
+    my_df = pd.DataFrame(data=[{1,2,3},{4,5,6}],columns=['a','b','c']).to_csv(sep=",", index=False, quotechar='"', encoding="UTF-8")
+    client = storage.Client()
+    bucket = client.get_bucket('my-new-bucket-holyshit')
+    blob = bucket.blob('my-test-file5.csv')
+
+    blob.upload_from_string(data=my_df) 
+
     #We will use Google stock ticker to predict its prices
     ticker = ['GOOG']
     start_date = '2019-07-01'
@@ -138,9 +147,18 @@ def update():
 
     df, ticker_not_found = get_stock_data(ticker, start_date, end_date)
     features = get_clean_data(df, start_date, end_date)
-    features.to_csv('Goog.csv', encoding='utf-8')
+    #features.to_csv('Goog.csv', encoding='utf-8')
+    
+    #Create csv file and store on GCP cloud storage
+    #my_df = pd.DataFrame(data=[{1,2,3},{4,5,6}],columns=['a','b','c']).to_csv(sep=",", index=False, quotechar='"', encoding="UTF-8")
+    my_df = features.to_csv(sep=",", index=False, quotechar='"', encoding="UTF-8")
+    client = storage.Client()
+    bucket = client.get_bucket('my-project-434-gcp-data')
+    blob = bucket.blob('goog.csv')
 
-    return jsonify(ups) 
+    blob.upload_from_string(data=my_df) 
+
+    return jsonify(my_df) 
 
 
 if __name__ == '__main__':
