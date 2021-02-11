@@ -91,7 +91,7 @@ if __name__ == '__main__':
     #We will use Google stock ticker to predict its prices
     ticker = ['GOOG']
     start_date = '2019-07-01'
-    end_date = '2020-10-01'
+    end_date = '2021-02-09'
 
     df, ticker_not_found = get_stock_data(ticker, start_date, end_date)
     features = get_clean_data(df, start_date, end_date)

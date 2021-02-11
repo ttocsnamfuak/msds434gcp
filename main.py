@@ -35,6 +35,42 @@ def root():
 def home():
     return jsonify(songs)
 
+@app.route('/predict')
+def predict():
+    # First get appropriate BQ credentials
+    import google.auth
+    #import json
+    from google.cloud import bigquery
+    from google.cloud import bigquery_storage
+
+    # Explicitly create a credentials object. This allows you to use the same
+    # credentials for both the BigQuery and BigQuery Storage clients, avoiding
+    # unnecessary API calls to fetch duplicate authentication tokens.
+    credentials, your_project_id = google.auth.default(
+        scopes=["https://www.googleapis.com/auth/cloud-platform"]
+    )
+
+    # Make clients.
+    bqclient = bigquery.Client(credentials=credentials, project=your_project_id,)
+    bqstorageclient = bigquery_storage.BigQueryReadClient(credentials=credentials)
+    
+    # Query BQ model prediction results table
+    # Download query results.
+    query_string = """
+    SELECT * FROM `my-project-434-gcp.export_evaluated_examples_google_automl_20210210105125_2021_02_10T17_08_53_829Z.evaluated_examples` LIMIT 1000
+    """
+
+    dataframe = (
+        bqclient.query(query_string)
+        .result()
+        .to_dataframe(bqstorage_client=bqstorageclient)
+    )
+    results = dataframe.to_json(orient="columns")
+    #parsed = json.loads(results) 
+
+    return results
+
+
 @app.route('/update')
 def update():
 
