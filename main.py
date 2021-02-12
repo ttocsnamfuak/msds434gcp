@@ -56,9 +56,7 @@ def predict():
     
     # Query BQ model prediction results table
     # Download query results.
-    query_string = """
-    #SELECT * FROM `my-project-434-gcp.export_evaluated_examples_google_automl_20210210105125_2021_02_10T17_08_53_829Z.evaluated_examples` LIMIT 1000
-    #"""
+    query_string = """SELECT * FROM `my-project-434-gcp.export_evaluated_examples_google_automl_20210210105125_2021_02_10T17_08_53_829Z.evaluated_examples` LIMIT 1000"""
 
     dataframe = (
         bqclient.query(query_string)
