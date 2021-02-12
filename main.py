@@ -56,19 +56,19 @@ def predict():
     
     # Query BQ model prediction results table
     # Download query results.
-   # query_string = """
+    query_string = """
     #SELECT * FROM `my-project-434-gcp.export_evaluated_examples_google_automl_20210210105125_2021_02_10T17_08_53_829Z.evaluated_examples` LIMIT 1000
     #"""
 
-   # dataframe = (
-   #     bqclient.query(query_string)
-   #     .result()
-   #     .to_dataframe(bqstorage_client=bqstorageclient)
-    #)
-   # results = dataframe.to_json(orient="columns")
+    dataframe = (
+        bqclient.query(query_string)
+        .result()
+        .to_dataframe(bqstorage_client=bqstorageclient)
+    )
+    results = dataframe.to_json(orient="columns")
     #parsed = json.loads(results) 
 
-    return "Hi"
+    return results
 
 
 @app.route('/update')
