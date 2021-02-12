@@ -1,5 +1,6 @@
 import datetime
 from flask import Flask, render_template, jsonify
+import pyarrow
 import gcloud
 from gcloud import storage
 import pandas as pd

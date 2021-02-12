@@ -3,6 +3,7 @@ numpy
 pandas
 yahoofinancials
 gcloud
+pyarrow
 google.cloud
 google.auth
 google.cloud.bigquery
