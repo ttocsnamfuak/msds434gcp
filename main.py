@@ -64,7 +64,7 @@ def predict():
         .result()
         .to_dataframe(bqstorage_client=bqstorageclient)
     )
-    results = dataframe.to_json(orient="columns")
+    results = dataframe.to_json(orient="index")
     #parsed = json.loads(results) 
 
     return results
