@@ -3,4 +3,5 @@ numpy
 pandas
 yahoofinancials
 gcloud
-
+google.cloud
+google.auth
