@@ -46,9 +46,9 @@ def predict():
     # Explicitly create a credentials object. This allows you to use the same
     # credentials for both the BigQuery and BigQuery Storage clients, avoiding
     # unnecessary API calls to fetch duplicate authentication tokens.
-   # credentials, your_project_id = google.auth.default(
-   #     scopes=["https://www.googleapis.com/auth/cloud-platform"]
-    #)
+    credentials, your_project_id = google.auth.default(
+       scopes=["https://www.googleapis.com/auth/cloud-platform"]
+    )
 
     # Make clients.
    # bqclient = bigquery.Client(credentials=credentials, project=your_project_id,)
