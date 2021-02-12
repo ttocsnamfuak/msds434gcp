@@ -40,8 +40,8 @@ def predict():
     # First get appropriate BQ credentials
     import google.auth
     #import json
-    #from google.cloud import bigquery
-    #from google.cloud import bigquery_storage
+    from google.cloud import bigquery
+    from google.cloud import bigquery_storage
 
     # Explicitly create a credentials object. This allows you to use the same
     # credentials for both the BigQuery and BigQuery Storage clients, avoiding
