@@ -5,3 +5,4 @@ yahoofinancials
 gcloud
 google.cloud
 google.auth
+google.cloud.bigquery
