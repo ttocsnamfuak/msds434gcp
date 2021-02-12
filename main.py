@@ -51,8 +51,8 @@ def predict():
     )
 
     # Make clients.
-   # bqclient = bigquery.Client(credentials=credentials, project=your_project_id,)
-   # bqstorageclient = bigquery_storage.BigQueryReadClient(credentials=credentials)
+    bqclient = bigquery.Client(credentials=credentials, project=your_project_id,)
+    bqstorageclient = bigquery_storage.BigQueryReadClient(credentials=credentials)
     
     # Query BQ model prediction results table
     # Download query results.
