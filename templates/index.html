@@ -1,15 +1,20 @@
 <!doctype html>
 <html>
 <head>
-  <title>MSDS 434 Hello World now with continuous deployment</title>
+  <title>MSDS 434 MLOps Pipeline</title>
   <script src="{{ url_for('static', filename='script.js') }}"></script>
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-  <h1>Hello world with continuous deployment try 5</h1>
+  <h1>MSDS 434 MLOps Pipeline</h1>
 
-  <h2>Hit /hello to get the JSON back</h2>
+  <h2>MVP application of a stock prediction ML model</h2>
+  <p>The following routes will update the Google Cloud storage with the last ten years of daily Google stock data, load and train binary classification model within BigQuery and return the last ten years data via JSON</p>
+  <a href="/update">Update Google stock data</a>
+  <p>The following routes will predict the buy/sell indicator for the last month of Google stock</p>
+  <a href="/predict">Predict Google stock data</a>
+
 
 </body>
 </html>

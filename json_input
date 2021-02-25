@@ -1,0 +1,5 @@
+{
+  "instances": [
+    { “high”: “242.77”, “low”: “238.67”, “open”: “238.92”,“volume”: “5371057”,“adjclose”: “241.519”,“formated_date”: “7/30/10”,“SMA”: “235.67”,“Std_20”: “9.79”,“Band_1”: “225.67”,“Band_2”: “245.67”,“dist_from_mean”: “6.285”,“vix_data”: “24.1299”,“ON_returns_signal_down”: “1”,“ON_returns_signal_up”: “0”, “stock_move”: “Buy”}
+  ]
+}
